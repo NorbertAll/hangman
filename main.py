@@ -20,6 +20,7 @@ run = True
 while run:
     clock.tick(FPS)
     win.fill((255, 255, 255))
+    win.blit(images[hangman_status], (0,0))
     pygame.display.update()
     for event in pygame.event.get():
         if event.type== pygame.QUIT:
