@@ -18,7 +18,7 @@ for i in range(26):
 
 images=[]
 for i in range(7):
-    image=pygame.image.load("hangman"+str(i)+".jpg")
+    image=pygame.image.load("hangman"+str(i)+".png")
     images.append(image)
 
 hangman_status= 0
