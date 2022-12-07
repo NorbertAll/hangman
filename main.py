@@ -3,7 +3,7 @@ import os
 
 pygame.init()
 WIDTH, HEIGHT = 800, 500
-pygame.display.set_mode((WIDTH, HEIGHT))
+win=pygame.display.set_mode((WIDTH, HEIGHT))
 pygame.display.set_caption("Hangman Game!")
 
 FPS = 60
