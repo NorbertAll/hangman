@@ -1,6 +1,7 @@
 import pygame
 import os
 import math
+import random
 
 pygame.init()
 WIDTH, HEIGHT = 800, 500
@@ -27,7 +28,8 @@ for i in range(7):
     images.append(image)
 
 hangman_status= 0
-word= "FENYLOKETONURIA"
+words=["PHENYLKETONURIA", "STOKE" "LEUKEMIA"]
+word= random.choice(words)
 guessed = []
 
 FPS = 60
@@ -38,7 +40,7 @@ def draw():
     win.fill((255, 255, 255))
     text= TITLE_GAME.render("HANGMAN GAME", 1, (0, 0, 0))
     win.blit(text, (WIDTH/2 - text.get_width()/2, 20))
-    
+
     display_world=""
     for letter in word:
         if letter in guessed:
