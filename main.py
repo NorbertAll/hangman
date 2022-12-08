@@ -55,6 +55,13 @@ def draw():
 
     win.blit(images[hangman_status], (-150,0))
     pygame.display.update()
+def display_message(message):
+    pygame.time.delay(3000)
+    win.fill((255, 255, 255))
+    text= WORD_FONT.render(message, 1, (0, 0, 0))
+    win.blit(text, (WIDTH/2 - text.get_width()/2, HEIGHT/2 - text.get_height()/2))
+    pygame.display.update()
+    pygame.time.delay(3000)
 
 while run:
     clock.tick(FPS)
@@ -79,10 +86,10 @@ while run:
             won=False
             break  
     if won:
-        print('won')
+        display_message("You WIN")
         break
     if hangman_status==6:
-        print("lost")
+        display_message("You LOST")
         break
 
 pygame.quit()
