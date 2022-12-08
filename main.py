@@ -20,6 +20,7 @@ for i in range(26):
 
 LETTER_FONT=pygame.font.SysFont('comicsans', 32)
 WORD_FONT=pygame.font.SysFont('comicsans', 32)
+TITLE_GAME= pygame.font.SysFont('comicsans', 70)
 images=[]
 for i in range(7):
     image=pygame.image.load("hangman"+str(i)+".png")
@@ -35,7 +36,9 @@ run = True
 
 def draw():
     win.fill((255, 255, 255))
-
+    text= TITLE_GAME.render("HANGMAN GAME", 1, (0, 0, 0))
+    win.blit(text, (WIDTH/2 - text.get_width()/2, 20))
+    
     display_world=""
     for letter in word:
         if letter in guessed:
