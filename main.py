@@ -80,5 +80,9 @@ while run:
             break  
     if won:
         print('won')
+        break
+    if hangman_status==6:
+        print("lost")
+        break
 
 pygame.quit()
