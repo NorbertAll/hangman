@@ -19,12 +19,15 @@ for i in range(26):
     letters.append([x,y, chr(A+i), True])
 
 LETTER_FONT=pygame.font.SysFont('comicsans', 32)
+WORD_FONT=pygame.font.SysFont('comicsans', 32)
 images=[]
 for i in range(7):
     image=pygame.image.load("hangman"+str(i)+".png")
     images.append(image)
 
 hangman_status= 0
+word= "FENYLOKETONURIA"
+guessed = []
 
 FPS = 60
 clock= pygame.time.Clock()
@@ -32,6 +35,15 @@ run = True
 
 def draw():
     win.fill((255, 255, 255))
+
+    display_world=""
+    for letter in word:
+        if letter in guessed:
+            display_world+= letter + " "
+        else:
+            display_world+= "_ "
+    text= WORD_FONT.render(display_world, 1 , (0, 0, 0))
+    win.blit(text, (300, 200))
 
     for letter in letters:
         x, y, ltr, visible=letter
@@ -41,7 +53,7 @@ def draw():
             win.blit(text, (x-text.get_width()/2, y-text.get_height()/2))
 
 
-    win.blit(images[hangman_status], (0,0))
+    win.blit(images[hangman_status], (-150,0))
     pygame.display.update()
 
 while run:
