@@ -16,7 +16,7 @@ A=65
 for i in range(26):
     x= startx + GAP*2 +(RADIUS*2 + GAP)*(i%13)
     y= starty+((i//13) *(GAP+RADIUS*2))
-    letters.append([x,y, chr(A+i)])
+    letters.append([x,y, chr(A+i), True])
 
 LETTER_FONT=pygame.font.SysFont('comicsans', 32)
 images=[]
@@ -34,10 +34,11 @@ def draw():
     win.fill((255, 255, 255))
 
     for letter in letters:
-        x, y, ltr=letter
-        pygame.draw.circle(win, (0, 0, 0), (x, y), RADIUS, 3)
-        text= LETTER_FONT.render(ltr, 1 , (0, 0, 0))
-        win.blit(text, (x-text.get_width()/2, y-text.get_height()/2))
+        x, y, ltr, visible=letter
+        if visible:
+            pygame.draw.circle(win, (0, 0, 0), (x, y), RADIUS, 3)
+            text= LETTER_FONT.render(ltr, 1 , (0, 0, 0))
+            win.blit(text, (x-text.get_width()/2, y-text.get_height()/2))
 
 
     win.blit(images[hangman_status], (0,0))
@@ -52,8 +53,10 @@ while run:
         if event.type==pygame.MOUSEBUTTONDOWN:
             m_x, m_y =pygame.mouse.get_pos()
             for letter in letters:
-                x, y, ltr= letter
-                dis=math.sqrt((x - m_x)**2+(y-m_y)**2)
-                if dis<RADIUS:
-                    print(ltr)
+                x, y, ltr, visible= letter
+                if visible:
+                    dis=math.sqrt((x - m_x)**2+(y-m_y)**2)
+                    if dis<RADIUS:
+                        letter[3]=False
+                        
 pygame.quit()
