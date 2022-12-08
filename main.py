@@ -71,5 +71,7 @@ while run:
                     if dis<RADIUS:
                         letter[3]=False
                         guessed.append(ltr)
+                        if ltr not in word:
+                            hangman_status+=1
                         
 pygame.quit()
